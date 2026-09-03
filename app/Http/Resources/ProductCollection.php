@@ -19,7 +19,7 @@ class ProductCollection extends ResourceCollection
             'message' => 'Products retrieved successfully',
             'data' => $this->collection,
             'meta' => [
-                'current_page' => $this->currentPage(),
+                'current_page' => $this->currentxPage(),
                 'last_page' => $this->lastPage(),
                 'per_page' => $this->perPage(),
                 'total' => $this->total(),
