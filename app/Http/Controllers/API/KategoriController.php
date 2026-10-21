@@ -8,6 +8,7 @@ use App\Http\Resources\KategoriResource;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Nette\Schema\Message;
 
 class KategoriController extends Controller
 {
@@ -42,7 +43,16 @@ class KategoriController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $kategori = Kategori::find($id);
+
+        if(!$kategori){
+            return response()->json([
+                'succes' => false,
+                'message' => 'data tidak ditemukan'
+            ], 404);
+        }
+
+        return new KategoriResource($kategori);
     }
 
     /**

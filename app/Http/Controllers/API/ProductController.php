@@ -41,7 +41,16 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $product = Product::find($id);
+
+        if(!$product){
+            return response()->json([
+                'succes' => false,
+                'message' => 'data tidak ditemukan'
+            ], 404);
+        }
+
+        return new ProductResource($product);
     }
 
     /**
